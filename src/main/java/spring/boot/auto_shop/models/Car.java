@@ -33,4 +33,9 @@ public class Car {
 
     @Column(name = "price")
     private int price;
+
+    @Column(name = "mileage")
+    private int mileage;
+
+
 }
