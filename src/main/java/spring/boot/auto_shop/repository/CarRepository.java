@@ -7,6 +7,5 @@ import spring.boot.auto_shop.models.Car;
 
 @Repository
 @Transactional
-public interface CarRepository extends JpaRepository<Car, Integer> {
-
+public interface CarRepository extends JpaRepository<Car, Long> {
 }
