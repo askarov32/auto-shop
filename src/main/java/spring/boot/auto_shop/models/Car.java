@@ -16,26 +16,28 @@ public class Car {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "brand")
-    private String brand;
+    @Column(name = "name")
+    private String name;
 
-    @Column(name = "model")
-    private String model;
-
-    @Column(name = "volume")
-    private int volume;
-
-    @Column(name = "description", columnDefinition = "text")
-    private String description;
-
-    @Column(name = "photo")
-    private String photo;
-
-    @Column(name = "price")
-    private int price;
+    @Column(name = "year")
+    private int year;
 
     @Column(name = "mileage")
     private int mileage;
 
+    @Column(name = "transmission")
+    private String transmission;
+
+    @Column(name = "horsepower")
+    private int hp;
+
+    @Column(name = "price")
+    private int price;
+
+    @Column(name = "image")
+    private String image;
+
+    @Column(name = "rentOrSale")
+    private String rentOrSale;
 
 }
