@@ -31,6 +31,29 @@
         }
     });
 
+    document.addEventListener("DOMContentLoaded", function() {
+        let currentPage = 1;
+        const loadMoreBtn = document.getElementById('load-more');
+
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                currentPage++;
+                fetch(`/load-more-cars?page=${currentPage}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.text();
+                    })
+                    .then(html => {
+                        const carList = document.getElementById('car-list');
+                        carList.innerHTML += html;
+                    })
+                    .catch(error => console.error('Error loading more cars:', error));
+            });
+        }
+    });
+
     /*------------------
         Background Set
     --------------------*/
