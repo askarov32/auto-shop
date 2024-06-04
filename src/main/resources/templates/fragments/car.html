@@ -1,0 +1,27 @@
+<div th:fragment="carListFragment">
+    <div th:each="car : ${cars}" class="col-lg-3 col-md-4 col-sm-6 mix"
+         th:classappend="${car.rentOrSale == 'sale' ? 'sale' : ''}">
+        <div class="car__item">
+            <div class="car__item__pic__slider owl-carousel">
+                <img th:src="@{${car.image}}" th:alt="${car.name}" style="width: 800px; height: 200px">
+            </div>
+            <div class="car__item__text">
+                <div class="car__item__text__inner">
+                    <div class="label-date" th:text="${car.year}"></div>
+                    <h5><a th:href="@{/car/${car.id}}" th:text="${car.name}"></a></h5>
+                    <ul>
+                        <li><span th:text="${car.mileage}"></span> km</li>
+                        <li th:text="${car.transmission}"></li>
+                        <li><span th:text="${car.hp}"></span> hp</li>
+                    </ul>
+                </div>
+                <div class="car__item__price">
+                    <span class="car-option"
+                          th:class="${car.rentOrSale == 'sale' ? 'car-option sale' : 'car-option'}"
+                          th:text="${car.rentOrSale == 'sale' ? 'For Sale' : 'For Rent'}"></span>
+                    <h6 th:text="${car.price} + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
