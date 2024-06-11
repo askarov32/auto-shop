@@ -7,6 +7,6 @@ import spring.boot.auto_shop.models.News;
 
 @Repository
 @Transactional
-public interface NewsRepository extends JpaRepository<News, Integer> {
+public interface BlogRepository extends JpaRepository<News, Integer> {
 
 }
