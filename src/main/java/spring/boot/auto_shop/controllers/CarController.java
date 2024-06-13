@@ -90,7 +90,7 @@ public class CarController {
 
     @GetMapping("/show-blogs")
     public  String listBlogs(Model model) {
-        model.addAttribute("blogList", blogService.getAllBlogs());
+        model.addAttribute("blogListFr", blogService.getAllBlogs());
         return "fragments/blog :: blogListFragment";
     }
 
