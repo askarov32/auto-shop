@@ -1,22 +1,22 @@
 package spring.boot.auto_shop.models;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
-@Table(name = "news")
+@Table(name = "blogs")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class News {
+public class Blog {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -26,16 +26,21 @@ public class News {
     @Column(name = "date")
     private String date;
 
-    @Column(name = "comment")
-    private String comment;
-
     @Column(name = "title")
     private String title;
 
-    @Column(name = "content")
+    @Column(length = 65535)
     private String content;
 
     @Column(name = "photo")
     private String photo;
 
+    @Column(name = "category")
+    private String category;
+
+    @Column(name = "quote")
+    private String quote;
+
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Comment> comments;
 }
