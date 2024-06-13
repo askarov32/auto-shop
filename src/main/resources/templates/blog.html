@@ -40,7 +40,7 @@
                     <div class="breadcrumb__text">
                         <h2>Latest Blogs</h2>
                         <div class="breadcrumb__links">
-                            <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                            <a href="./index.html"><i class="fa fa-home"></i>Home</a>
                             <span>Our Blogs</span>
                         </div>
                     </div>
@@ -56,17 +56,16 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="blog__list">
-                        <div th:each="news : ${newsList}" class="blog__item">
+                        <div th:each="blog1 : ${blogList1}" class="blog__item">
                             <div class="blog__item__pic">
-                                <img th:src="${news.photo}" alt="news image" class="img-fluid" />
+                                <img th:src="${blog1.photo}" alt="blogs image" class="img-fluid"/>
                                 <ul class="news-meta">
-                                    <li th:text="'By ' + ${news.author}">By Author</li>
-                                    <li th:text="${news.date}"></li>
-                                    <li th:text="${news.comment}"></li>
+                                    <li th:text="'By ' + ${blog1.author}">By Author</li>
+                                    <li th:text="${blog1.date}"></li>
                                 </ul>
                             </div>
                             <div class="blog__item__text">
-                                <h5><a th:href="@{/news-detail(id=${news.id})}" th:text="${news.title}"></a></h5>
+                                <h5><a th:href="@{/blog-details(id=${blog1.id})}" th:text="${blog1.title}"></a></h5>
                             </div>
                         </div>
                     </div>
@@ -85,11 +84,11 @@
                         </form>
                         <div class="blog__sidebar__feature">
                             <h4>Feature News</h4>
-                            <div th:each="news : ${newsList}" class="blog__sidebar__feature__item">
-                                <h6><a th:href="@{/news-detail(id=${news.id})}" th:text="${news.title}"></a></h6>
+                            <div th:each="blog : ${blogList1}" class="blog__sidebar__feature__item">
+                                <h6><a th:href="@{/blogs-details(id=${blog.id})}" th:text="${blog.title}"></a></h6>
                                 <ul>
-                                    <li th:text="'By ' + ${news.author}">By Author</li>
-                                    <li th:text="${news.date}"></li>
+                                    <li th:text="'By ' + ${blog.author}">By Author</li>
+                                    <li th:text="${blog.date}"></li>
                                 </ul>
                             </div>
                         </div>
@@ -105,9 +104,9 @@
                         <div class="blog__sidebar__tag">
                             <h4>Tag</h4>
                             <a href="#">Car Dealer</a>
-                            <a href="#">bmw</a>
+                            <a href="#">BMW</a>
                             <a href="#">Chevrolet</a>
-                            <a href="#">ferrari</a>
+                            <a href="#">Ferrari</a>
                             <a href="#">Honda</a>
                             <a href="#">Hatchback</a>
                         </div>
