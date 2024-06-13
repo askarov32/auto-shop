@@ -1,0 +1,16 @@
+<div th:fragment="blogListFragment">
+    <div th:each="blogs : ${blogListFr}" class="col-lg-4 col-md-6">
+        <div class="latest__blog__item" th:style="'background-image: url(' + ${blogs.image} + '); background-size: cover; background-position: center;'">
+            <div class="latest__blog__item__text">
+                <ul>
+                    <li th:text="'By ' + ${blogs.author}">By Author</li>
+                    <li th:text="${blogs.date}"></li>
+                    <li th:text="${blogs.comment}"></li>
+                </ul>
+                <h5 th:text="${blogs.title}"></h5>
+                <p th:text="${blogs.content}"></p>
+                <a th:href="@{/blogs-detail(id=${blogs.id})}">View More <i class="fa fa-long-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
