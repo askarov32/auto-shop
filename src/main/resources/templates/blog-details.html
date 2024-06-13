@@ -99,19 +99,21 @@
                     </div>
                 </div>
                 <div class="blog__details__comment">
-                    <h4 th:text="${blog.comments.size()} + ' Comment(s)'"></h4>
+                    <h4>Comments</h4>
                     <div th:each="comment : ${blog.comments}" class="blog__details__comment__item">
                         <div class="blog__details__comment__item__pic">
-                            <img src="/img/blog/details/comment-1.png" alt="">
+                            <img th:src="${comment.user.profilePicture}" alt="User Image">
                         </div>
                         <div class="blog__details__comment__item__text">
-                            <h2 th:each="comment : ${blog.comments}" th:text="${comment.user.fullname}"></h2>
+                            <h6 th:text="${comment.user.fullname}"></h6>
                             <p th:text="${comment.text}"></p>
                             <a href="#">Like</a>
                             <a href="#">Reply</a>
+                            <br>
                         </div>
                     </div>
                 </div>
+
                 <div class="blog__details__comment__form">
                     <h4>Leave A Reply</h4>
                     <form action="#">
