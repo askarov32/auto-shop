@@ -94,4 +94,8 @@ public class CarController {
         return "fragments/blog :: blogListFragment";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 }
