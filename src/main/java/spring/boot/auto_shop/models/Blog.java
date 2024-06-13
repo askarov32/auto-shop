@@ -41,6 +41,9 @@ public class Blog {
     @Column(name = "quote")
     private String quote;
 
+    @Column(name = "description")
+    private String description;
+
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 }
