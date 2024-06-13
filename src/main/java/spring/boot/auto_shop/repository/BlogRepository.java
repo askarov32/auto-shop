@@ -3,10 +3,10 @@ package spring.boot.auto_shop.repository;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import spring.boot.auto_shop.models.News;
+import spring.boot.auto_shop.models.Blog;
 
 @Repository
 @Transactional
-public interface BlogRepository extends JpaRepository<News, Integer> {
+public interface BlogRepository extends JpaRepository<Blog, Integer> {
 
 }
