@@ -99,32 +99,6 @@
                         <p th:text="${blog.authorBio}"></p>
                     </div>
                 </div>
-                <div class="blog__details__btns">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <a href="#" class="blog__details__btns__item set-bg" th:attr="data-setbg=@{/img/blog/details/pre.jpg}">
-                                        <h6 th:text="${blog.prevTitle}"></h6>
-                                        <ul>
-                                            <li th:text="${blog.prevAuthor}"></li>
-                                            <li th:text="${blog.prevDate}"></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                                <div class="col-lg-6">
-                                    <a href="#" class="blog__details__btns__item set-bg" th:attr="data-setbg=@{/img/blog/details/next.jpg}">
-                                        <h6 th:text="${blog.nextTitle}"></h6>
-                                        <ul>
-                                            <li th:text="${blog.nextAuthor}"></li>
-                                            <li th:text="${blog.nextDate}"></li>
-                                        </ul>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="blog__details__comment">
                     <h4 th:text="${blog.comments.size()} + ' Comment(s)'"></h4>
                     <div th:each="comment : ${blog.comments}" class="blog__details__comment__item">
@@ -132,7 +106,7 @@
                             <img src="/img/blog/details/comment-1.png" alt="">
                         </div>
                         <div class="blog__details__comment__item__text">
-                            <h6 th:text="${comment.author}"></h6>
+                            <h2 th:each="comment : ${blog.comments}" th:text="${comment.user.fullname}"></h2>
                             <p th:text="${comment.text}"></p>
                             <a href="#">Like</a>
                             <a href="#">Reply</a>
