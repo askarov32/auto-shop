@@ -146,7 +146,7 @@
                                                 <option value="">Acura</option>
                                                 <option value="">Audi</option>
                                                 <option value="">Bentley</option>
-                                                <<option value="">BMW</option>
+                                                <option value="">BMW</option>
                                                 <option value="">Bugatti</option>
                                             </select>
                                         </div>
@@ -360,16 +360,16 @@
                             </ul>
                         </div>
                         <div class="car__item__price">
-                                <span class="car-option"
-                                      th:class="${car.rentOrSale == 'sale' ? 'car-option sale' : 'car-option'}"
-                                      th:text="${car.rentOrSale == 'sale' ? 'For Sale' : 'For Rent'}"></span>
-                            <h6 th:text="${car.price} + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
+                            <span class="car-option"
+                                  th:class="${car.rentOrSale == 'sale' ? 'car-option sale' : 'car-option'}"
+                                  th:text="${car.rentOrSale == 'sale' ? 'For Sale' : 'For Rent'}"></span>
+                            <h6 th:text="${car.price} + ' ₸' + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<!--        <button id="load-more" class="load-more-btn">Show more</button>-->
+        <!-- <button id="load-more" class="load-more-btn">Show more</button> -->
     </div>
 </section>
 <!-- Car Section End -->
@@ -416,20 +416,19 @@
             <p>Sign up for the latest Automobile Industry information and more.</p>
         </div>
         <div class="row">
-            <div th:each="news : ${newsList}" class="col-lg-4 col-md-6">
+            <div th:each="blog : ${blogList}" class="col-lg-4 col-md-6">
                 <div class="latest__blog__item">
                     <div class="latest__blog__item__pic">
-                        <img th:src="${news.photo}" alt="news image" class="img-fluid" style="width: 400px; height: 230px"/>
+                        <img th:src="@{${blog.photo}}" alt="blogs image" class="img-fluid" style="width: 400px; height: 230px"/>
                     </div>
                     <div class="latest__blog__item__text">
                         <ul class="news-meta">
-                            <li th:text="'By ' + ${news.author}">By Author</li>
-                            <li th:text="${news.date}"></li>
-                            <li th:text="${news.comment}"></li>
+                            <li th:text="'By ' + ${blog.author}">By Author</li>
+                            <li th:text="${blog.date}"></li>
                         </ul>
-                        <h5 th:text="${news.title}" style="justify-content: center"></h5>
-                        <p th:text="${news.content}"></p>
-                        <a th:href="@{/news-detail(id=${news.id})}">View More <i class="fa fa-long-arrow-right"></i></a>
+                        <h5 th:text="${blog.title}" style="justify-content: center"></h5>
+                        <p th:text="${blog.content}"></p>
+                        <a th:href="@{/blog-details(id=${blog.id})}">View More <i class="fa fa-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -438,8 +437,7 @@
 </section>
 <!-- Latest Blog Section End -->
 
-
-<<!-- Cta Begin -->
+<!-- Cta Begin -->
 <div class="cta">
     <div class="container">
         <div class="row">
@@ -458,7 +456,7 @@
         </div>
     </div>
 </div>
-<!-- Cta End -->>
+<!-- Cta End -->
 
 <div th:insert="fragments/footer.html"></div>
 

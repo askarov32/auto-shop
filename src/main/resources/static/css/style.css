@@ -2263,7 +2263,7 @@ ol {
 	position: relative;
 	border-radius: 2px;
 }
-.news-meta {
+.blog-meta {
 	list-style: none;
 	padding: 0;
 	display: flex;
@@ -2272,7 +2272,7 @@ ol {
 	margin-bottom: 10px;
 }
 
-.news-meta li {
+.blog-meta li {
 	margin-right: 10px;
 	color: #888;
 	font-size: 14px;

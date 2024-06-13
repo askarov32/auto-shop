@@ -5,10 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import spring.boot.auto_shop.models.Blog;
 import spring.boot.auto_shop.models.Car;
-import spring.boot.auto_shop.models.News;
+import spring.boot.auto_shop.service.BlogService;
 import spring.boot.auto_shop.service.CarService;
-import spring.boot.auto_shop.service.NewsService;
 
 import java.util.List;
 
@@ -16,25 +16,25 @@ import java.util.List;
 public class CarController {
 
     private final CarService carService;
-    private final NewsService newsService;
+    private final BlogService blogService;
 
     @Autowired
-    public CarController(CarService carService, NewsService newsService) {
+    public CarController(CarService carService, BlogService blogService) {
         this.carService = carService;
-        this.newsService = newsService;
+        this.blogService = blogService;
     }
 
     @GetMapping("/")
     public String getIndexPage(Model model) {
         List<Car> cars = carService.getCars(1, 8);
-        List<News> news = newsService.getAllNews();
-        for (News news1: news) {
-            if (news1.getContent().length() > 255) {
-                news1.setContent(news1.getContent().substring(0, 255) + "...");
+        List<Blog> blogs = blogService.getAllBlogs();
+        for (Blog blog1 : blogs) {
+            if (blog1.getContent().length() > 255) {
+                blog1.setContent(blog1.getContent().substring(0, 255) + "...");
             }
         }
         model.addAttribute("cars", cars);
-        model.addAttribute("newsList", news);
+        model.addAttribute("blogList", blogs);
         return "index";
     }
 
@@ -45,13 +45,16 @@ public class CarController {
 
     @GetMapping("/blog")
     public String blogPage(Model model) {
-        List<News> news = newsService.getAllNews();
-        model.addAttribute("newsList", news);
+        List<Blog> blogs = blogService.getAllBlogs();
+        model.addAttribute("blogList1", blogs);
         return "blog";
     }
 
+
     @GetMapping("/blog-details")
-    public String blogDetailsPage() {
+    public String blogDetails(@RequestParam("id") int id, Model model) {
+        Blog blog = blogService.getBlogById(id);
+        model.addAttribute("blog", blog);
         return "blog-details";
     }
 
@@ -76,6 +79,7 @@ public class CarController {
         model.addAttribute("cars", cars);
         return "fragments/car :: carListFragment";
     }
+
     @GetMapping("/load-more-cars")
     public String loadMoreCars(@RequestParam("page") int page, Model model) {
         int pageSize = 8;
@@ -84,9 +88,10 @@ public class CarController {
         return "fragments/car :: carListFragment";
     }
 
-    @GetMapping("/show-news")
-    public  String listNews(Model model) {
-        model.addAttribute("newsList", newsService.getAllNews());
-        return "fragments/news :: newsListFragment";
+    @GetMapping("/show-blogs")
+    public  String listBlogs(Model model) {
+        model.addAttribute("blogList", blogService.getAllBlogs());
+        return "fragments/blog :: blogListFragment";
     }
+
 }
