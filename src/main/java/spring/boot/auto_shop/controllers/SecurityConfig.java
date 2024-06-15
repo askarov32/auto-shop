@@ -1,4 +1,4 @@
-package spring.boot.auto_shop.config;
+package spring.boot.auto_shop.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -15,11 +15,8 @@ import spring.boot.auto_shop.service.CustomUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
-
     @Autowired
     public SecurityConfig(CustomUserDetailsService userDetailsService) {
-        this.userDetailsService = userDetailsService;
     }
 
     @Bean
