@@ -7,7 +7,8 @@ import java.util.Date;
 
 @Entity
 @Table(name = "sales")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
