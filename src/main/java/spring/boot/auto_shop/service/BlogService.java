@@ -19,4 +19,11 @@ public class BlogService {
     public Blog getBlogById(int id) {
         return blogRepository.findById(id).orElseThrow();
     }
+
+    public List<Blog> findAllBlogs() {
+        List<Blog> blogs = blogRepository.findAll();
+        for (Blog blog : blogs) {
+            blog.getComments().size();         }
+        return blogs;
+    }
 }

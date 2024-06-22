@@ -85,7 +85,7 @@
                         <div class="blog__sidebar__feature">
                             <h4>Feature News</h4>
                             <div th:each="blog : ${blogList1}" class="blog__sidebar__feature__item">
-                                <h6><a th:href="@{/blogs-details(id=${blog.id})}" th:text="${blog.title}"></a></h6>
+                                <h6><a th:href="@{/blogs-info(id=${blog.id})}" th:text="${blog.title}"></a></h6>
                                 <ul>
                                     <li th:text="'By ' + ${blog.author}">By Author</li>
                                     <li th:text="${blog.date}"></li>
