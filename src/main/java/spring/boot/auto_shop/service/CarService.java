@@ -6,8 +6,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import spring.boot.auto_shop.models.Car;
 import spring.boot.auto_shop.repository.CarRepository;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
