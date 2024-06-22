@@ -7,6 +7,6 @@ import spring.boot.auto_shop.models.User;
 
 @Repository
 @Transactional
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findByLogin(String login);
+public interface UserRepository extends JpaRepository<User, Integer> {
+    User findByEmail(String email);
 }
