@@ -65,45 +65,37 @@
                                         <div class="select-list-item">
                                             <p>Select Year</p>
                                             <select>
-                                                <option data-display=" ">Select Year</option>
-                                                <option value="">2020</option>
-                                                <option value="">2019</option>
-                                                <option value="">2018</option>
-                                                <option value="">2017</option>
-                                                <option value="">2016</option>
-                                                <option value="">2015</option>
+                                                <option data-display=" ">Year</option>
+                                                <th:block th:each="yearRent : ${cars_years_rent}">
+                                                    <option th:value="${yearRent}" th:text="${yearRent}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                         <div class="select-list-item">
                                             <p>Select Brand</p>
                                             <select>
-                                                <option data-display=" ">Select Brand</option>
-                                                <option value="">Acura</option>
-                                                <option value="">Audi</option>
-                                                <option value="">Bentley</option>
-                                                <option value="">BMW</option>
-                                                <option value="">Bugatti</option>
-                                                <option value="">Toyota</option>
-                                                <option value="">Porsche</option>
+                                                <option data-display=" ">Brand</option>
+                                                <th:block th:each="brand_rent : ${cars_brands_rent}">
+                                                    <option th:value="${brand_rent}" th:text="${brand_rent}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                         <div class="select-list-item">
                                             <p>Select Model</p>
                                             <select>
-                                                <option data-display=" ">Select Model</option>
-                                                <option value="">Q3</option>
-                                                <option value="">A4 </option>
-                                                <option value="">AVENTADOR</option>
+                                                <option data-display=" ">Model</option>
+                                                <th:block th:each="model_rent : ${cars_model_rent}">
+                                                    <option th:value="${model_rent}" th:text="${model_rent}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                         <div class="select-list-item">
                                             <p>Select Mileage</p>
                                             <select>
-                                                <option data-display=" ">Select Mileage</option>
-                                                <option value="">2700</option>
-                                                <option value="">2500</option>
-                                                <option value="">15000</option>
-                                                <option value="">100000</option>
+                                                <option data-display=" ">Mileage</option>
+                                                <th:block th:each="mile_rent : ${cars_mile_rent}">
+                                                    <option th:value="${mile_rent}" th:text="${mile_rent}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                     </div>
@@ -130,43 +122,37 @@
                                         <div class="select-list-item">
                                             <p>Select Year</p>
                                             <select>
-                                                <option data-display=" ">Select Year</option>
-                                                <option value="">2020</option>
-                                                <option value="">2019</option>
-                                                <option value="">2018</option>
-                                                <option value="">2017</option>
-                                                <option value="">2016</option>
-                                                <option value="">2015</option>
+                                                <option data-display=" ">Year</option>
+                                                <th:block th:each="year_sale : ${cars_years_sale}">
+                                                    <option th:value="${year_sale}" th:text="${year_sale}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                         <div class="select-list-item">
                                             <p>Select Brand</p>
                                             <select>
-                                                <option data-display=" ">Select Brand</option>
-                                                <option value="">Acura</option>
-                                                <option value="">Audi</option>
-                                                <option value="">Bentley</option>
-                                                <option value="">BMW</option>
-                                                <option value="">Bugatti</option>
+                                                <option data-display=" ">Brand</option>
+                                                <th:block th:each="brand_sale : ${cars_brands_sale}">
+                                                    <option th:value="${brand_sale}" th:text="${brand_sale}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                         <div class="select-list-item">
                                             <p>Select Model</p>
                                             <select>
-                                                <option data-display=" ">Select Model</option>
-                                                <option value="">Q3</option>
-                                                <option value="">A4 </option>
-                                                <option value="">AVENTADOR</option>
+                                                <option data-display=" ">Model</option>
+                                                <th:block th:each="model_sale : ${cars_model_sale}">
+                                                    <option th:value="${model_sale}" th:text="${model_sale}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                         <div class="select-list-item">
                                             <p>Select Mileage</p>
                                             <select>
-                                                <option data-display=" ">Select Mileage</option>
-                                                <option value="">27</option>
-                                                <option value="">25</option>
-                                                <option value="">15</option>
-                                                <option value="">10</option>
+                                                <option data-display=" ">Mileage</option>
+                                                <th:block th:each="mile_sale : ${cars_mile_sale}">
+                                                    <option th:value="${mile_sale}" th:text="${mile_sale}"></option>
+                                                </th:block>
                                             </select>
                                         </div>
                                     </div>
@@ -181,7 +167,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit" class="site-btn">Searching</button>
+                                    <button type="submit" class="site-btn">Search</button>
                                 </form>
                             </div>
                         </div>
@@ -347,12 +333,12 @@
                  th:classappend="${car.rentOrSale == 'sale' ? 'sale' : ''}">
                 <div class="car__item">
                     <div class="car__item__pic__slider owl-carousel">
-                        <img th:src="@{${car.image}}" th:alt="${car.name}" style="width: 100%; height: 200px">
+                        <img th:src="@{${car.image}}" th:alt="${car.brand} + ' ' + ${car.model}" style="width: 100%; height: 200px">
                     </div>
                     <div class="car__item__text">
                         <div class="car__item__text__inner">
                             <div class="label-date" th:text="${car.year}"></div>
-                            <h5><a th:href="@{/car/${car.id}}" th:text="${car.name}"></a></h5>
+                            <h5><a th:href="@{/car/${car.id}}" th:text="${car.brand} + ' ' + ${car.model}"></a></h5>
                             <ul>
                                 <li><span th:text="${car.mileage}"></span> km</li>
                                 <li th:text="${car.transmission}"></li>
@@ -363,13 +349,12 @@
                             <span class="car-option"
                                   th:class="${car.rentOrSale == 'sale' ? 'car-option sale' : 'car-option'}"
                                   th:text="${car.rentOrSale == 'sale' ? 'For Sale' : 'For Rent'}"></span>
-                            <h6 th:text="${car.price} + ' ₸' + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
+                            <h6 th:text="${car.price} + ' $' + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <button id="load-more" class="load-more-btn">Show more</button> -->
     </div>
 </section>
 <!-- Car Section End -->
@@ -428,7 +413,7 @@
                         </ul>
                         <h5 th:text="${blog.title}" style="justify-content: center"></h5>
                         <p th:text="${blog.content}"></p>
-                        <a th:href="@{/blog-details(id=${blog.id})}">View More<i class="fa fa-long-arrow-right"></i></a>
+                        <a th:href="@{/blog-info(id=${blog.id})}">View More<i class="fa fa-long-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
