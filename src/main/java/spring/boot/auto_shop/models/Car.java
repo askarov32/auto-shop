@@ -16,8 +16,11 @@ public class Car {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "brand")
+    private String brand;
+
+    @Column(name = "model")
+    private String model;
 
     @Column(name = "year")
     private int year;
@@ -40,4 +43,16 @@ public class Car {
     @Column(name = "rentOrSale")
     private String rentOrSale;
 
+    @ManyToOne
+    @JoinColumn(name = "color_id", referencedColumnName = "id")
+    private Color color;
+
+    @ManyToOne
+    @JoinColumn(name = "engine_id", referencedColumnName = "id")
+    private Engine engine;
+
+    @ManyToOne
+    @JoinColumn(name = "car_body_id", referencedColumnName = "id")
+    private CarBody carBody;
 }
+
