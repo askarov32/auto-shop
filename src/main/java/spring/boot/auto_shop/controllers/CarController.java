@@ -1,16 +1,13 @@
 package spring.boot.auto_shop.controllers;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import spring.boot.auto_shop.models.Car;
-import spring.boot.auto_shop.models.Color;
 import spring.boot.auto_shop.service.CarService;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -21,25 +18,11 @@ public class CarController {
         this.carService = carService;
     }
 
-    @GetMapping("/show-cars")
-    public String showCars(@RequestParam("page") int page, Model model) {
-        List<Car> cars = carService.getCars(page, 8);
-        model.addAttribute("cars", cars);
-        return "fragments/car :: carListFragment";
-    }
-
-    @GetMapping("/load-more-cars")
-    public String loadMoreCars(@RequestParam("page") int page, Model model) {
-        int pageSize = 8;
-        List<Car> moreCars = carService.getMoreCars(page, pageSize);
-        model.addAttribute("cars", moreCars);
-        return "fragments/car :: carListFragment";
-    }
-
-    @PreAuthorize("isAuthenticated()")
-    @GetMapping("/car-details")
-    public String carDetailsPage() {
-        return "car-details";
+    @GetMapping("/car-info")
+    public String getCarDetails(@RequestParam("id") Long id, Model model) {
+        Car car = carService.getCarById(id);
+        model.addAttribute("car", car);
+        return "car-info";
     }
 
     @GetMapping("/car")

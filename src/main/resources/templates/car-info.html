@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Car Info Template">
+    <meta name="keywords" content="Car, Info, HTML">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title th:text="${car.brand} + ' ' + ${car.model}">Car Details</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{/css/elegant-icons.css}">
+    <link rel="stylesheet" th:href="@{/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}">
+    <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/css/slicknav.min.css}">
+</head>
+
+<body>
+<!-- Page Preloader -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+<div th:insert="fragments/header.html"></div>
+
+<!-- Breadcrumb Begin -->
+<div class="breadcrumb-option set-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text" style="color: black;">
+                    <h2 th:text="${car.brand} + ' ' + ${car.model}" style="color: black;"></h2>
+                    <div class="breadcrumb__links">
+                        <a href="/" style="color: black;"><i class="fa fa-home"></i> Home</a>
+                        <a href="/car" style="color: black;">Car Listing</a>
+                        <span th:text="${car.brand} + ' ' + ${car.model}" style="color: black;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb End -->
+
+<!-- Car Details Section Begin -->
+<section class="car-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9">
+                <div class="car__details__pic">
+                    <div class="car__details__pic__large">
+                        <img class="car-big-img" th:src="@{${car.image}}" alt="Car Image">
+                    </div>
+                </div>
+                <div class="car__details__tab">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">Vehicle Overview</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Technical</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">Features & Options</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">Vehicle Location</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                            <div class="car__details__tab__info">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="car__details__tab__info__item">
+                                            <h5>General Information</h5>
+                                            <ul>
+                                                <li><i class="fa fa-check"></i> Brand: <span th:text="${car.brand}"></span></li>
+                                                <li><i class="fa fa-check"></i> Model: <span th:text="${car.model}"></span></li>
+                                                <li><i class="fa fa-check"></i> Year: <span th:text="${car.year}"></span></li>
+                                                <li><i class="fa fa-check"></i> Mileage: <span th:text="${car.mileage} + ' km'"></span></li>
+                                                <li><i class="fa fa-check"></i> Transmission: <span th:text="${car.transmission}"></span></li>
+                                                <li><i class="fa fa-check"></i> Horsepower: <span th:text="${car.hp} + ' HP'"></span></li>
+                                                <li><i class="fa fa-check"></i> Price: <span th:text="${car.price} + ' $'"></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="car__details__tab__info__item">
+                                            <h5>Additional Information</h5>
+                                            <ul>
+                                                <li><i class="fa fa-check"></i> Color: <span th:text="${car.color.name}"></span></li>
+                                                <li><i class="fa fa-check"></i> Engine: <span th:text="${car.engine.name}"></span></li>
+                                                <li><i class="fa fa-check"></i> Body: <span th:text="${car.carBody.name}"></span></li>
+                                                <li><i class="fa fa-check"></i> Rent or Sale: <span th:text="${car.rentOrSale}"></span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="car__details__tab__info">
+                                <!-- Technical Details Here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-3" role="tabpanel">
+                            <div class="car__details__tab__info">
+                                <!-- Features & Options Here -->
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabs-4" role="tabpanel">
+                            <div class="car__details__tab__info">
+                                <!-- Vehicle Location Here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="car__details__sidebar">
+                    <div class="car__details__sidebar__model">
+
+                        <a href="#" class="primary-btn">Get Today's Price</a>
+                    </div>
+                    <div class="car__details__sidebar__payment">
+                        <ul>
+                            <li>MSRP <span th:text="${car.price} + ' $'"></span></li>
+                            <li>Discount
+                                <span th:text="${car.discount != null && car.rentOrSale == 'sale' ? car.discount + ' $' : 'No Discount'}"></span>
+                            </li>
+                            <li>Price
+                               <!-- <span th:if="${car.rentOrSale != 'rent'}" th:text="${car.discount != null ? car.price - car.discount : car.price} + ' $'"></span> -->
+                                <span th:if="${car.rentOrSale == 'rent'}" th:text="${car.price} + ' $'"></span>
+                            </li>
+                        </ul>
+                        <a href="#" class="primary-btn"><i class="fa fa-credit-card"></i> Express Purchase</a>
+                        <a href="#" class="primary-btn sidebar-btn"><i class="fa fa-sliders"></i> Build Payment</a>
+                        <a href="#" class="primary-btn sidebar-btn"><i class="fa fa-money"></i> Value Trade</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Car Details Section End -->
+
+<div th:insert="fragments/footer.html"></div>
+
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

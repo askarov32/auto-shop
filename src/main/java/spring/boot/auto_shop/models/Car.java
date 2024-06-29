@@ -2,6 +2,10 @@ package spring.boot.auto_shop.models;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "cars")
@@ -54,5 +58,18 @@ public class Car {
     @ManyToOne
     @JoinColumn(name = "car_body_id", referencedColumnName = "id")
     private CarBody carBody;
+
+    @Column(name = "discount")
+    private String discount;
+
+    @Column(updatable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column
+    @UpdateTimestamp
+    private LocalDateTime updatedAt;
+
+
 }
 
