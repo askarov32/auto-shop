@@ -17,7 +17,8 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
-<div class="container">
+<div th:insert="fragments/header.html"></div>
+<div class="container" style="padding-top: 50px">
     <h2>Please sign in!</h2>
     <form action="/auth" method="post">
         <div class="form-group">
@@ -29,8 +30,10 @@
             <input type="password" name="password" class="form-control"/>
         </div>
         <div>
-            <button class="btn btn-primary">Login</button>
+            <button class="btn btn-primary">Log In</button>
         </div>
+        <br>
+        <p><a href="/register">I don't have account</a></p>
         <div th:if="${param.error}">
             <p class="alert alert-danger">Invalid email or password.</p>
         </div>
