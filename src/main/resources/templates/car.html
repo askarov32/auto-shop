@@ -68,22 +68,21 @@
                             <form action="#">
                                 <select>
                                     <option data-display="Brand">Select Brand</option>
-                                    <option value="">Acura</option>
-                                    <option value="">Audi</option>
-                                    <option value="">Bentley</option>
-                                    <<option value="">BMW</option>
-                                    <option value="">Bugatti</option>
+                                    <th:block th:each="brand : ${brands}">
+                                        <option th:value="${brand}" th:text="${brand}"></option>
+                                    </th:block>
                                 </select>
                                 <select>
                                     <option data-display="Model">Select Model</option>
-                                    <option value="">Q3</option>
-                                    <option value="">A4 </option>
-                                    <option value="">AVENTADOR</option>
+                                    <th:block th:each="model : ${models}">
+                                        <option th:value="${model}" th:text="${model}"></option>
+                                    </th:block>
                                 </select>
                                 <select>
-                                    <option value="">Body Style</option>
-                                    <option value="">Option 1</option>
-                                    <option value="">Option 2</option>
+                                    <option data-display="Body Style">Select Body Style</option>
+                                    <th:block th:each="body : ${car_bodies}">
+                                        <option th:value="${body}" th:text="${body}"></option>
+                                    </th:block>
                                 </select>
                                 <select>
                                     <option value="">Condition</option>
@@ -91,30 +90,27 @@
                                     <option value="">Second Hand</option>
                                 </select>
                                 <select>
-                                    <option value="">Transmisson</option>
-                                    <option value="">Bluetooth</option>
-                                    <option value="">WiFi</option>
+                                    <option value="">Transmission</option>
+                                    <option value="">Automatic</option>
+                                    <option value="">Manual</option>
                                 </select>
                                 <select>
-                                    <option value="">Mileage</option>
-                                    <option value="">27</option>
-                                    <option value="">20</option>
-                                    <option value="">15</option>
-                                    <option value="">10</option>
+                                    <option data-display="Mileage">Select Mileage</option>
+                                    <th:block th:each="mile : ${miles}">
+                                        <option th:value="${mile}" th:text="${mile}"></option>
+                                    </th:block>
                                 </select>
                                 <select>
-                                    <option value="">Engine</option>
-                                    <option value="">BS3</option>
-                                    <option value="">BS4</option>
-                                    <option value="">BS5</option>
-                                    <option value="">BS6</option>
+                                    <option data-display="Engine">Select Engine</option>
+                                    <th:block th:each="engine : ${engines}">
+                                        <option th:value="${engine}" th:text="${engine}"></option>
+                                    </th:block>
                                 </select>
                                 <select>
-                                    <option value="">Colors</option>
-                                    <option value="">Red</option>
-                                    <option value="">Blue</option>
-                                    <option value="">Black</option>
-                                    <option value="">Yellow</option>
+                                    <option data-display="Color">Select Color</option>
+                                    <th:block th:each="color : ${colors}">
+                                        <option th:value="${color}" th:text="${color}"></option>
+                                    </th:block>
                                 </select>
                                 <div class="filter-price">
                                     <p>Price:</p>
@@ -148,238 +144,40 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6">
-                                <div class="car__filter__option__item car__filter__option__item--right">
+                                <div class="car__filter__option__item car__filter__option__item--right" style="justify-content: space-between">
                                     <h6>Sort By</h6>
                                     <select>
-                                        <option value="">Price: Highest Fist</option>
-                                        <option value="">Price: Lowest Fist</option>
+                                        <option value="">Price: Highest First</option>
+                                        <option value="">Price: Lowest First</option>
+                                        <option value="">Mileage: Highest First</option>
+                                        <option value="">Mileage: Lowest First</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4">
+                    <div class="row car-filter" id="car-list">
+                        <div th:each="car : ${cars}" class="col-lg-3 col-md-4 col-sm-6 mix"
+                             th:classappend="${car.rentOrSale == 'sale' ? 'sale' : ''}">
                             <div class="car__item">
                                 <div class="car__item__pic__slider owl-carousel">
-                                    <img src="img/cars/car-1.jpg" alt="">
-                                    <img src="img/cars/car-8.jpg" alt="">
-                                    <img src="img/cars/car-6.jpg" alt="">
-                                    <img src="img/cars/car-3.jpg" alt="">
+                                    <img th:src="@{${car.image}}" th:alt="${car.brand} + ' ' + ${car.model}" style="width: 100%; height: 200px">
                                 </div>
                                 <div class="car__item__text">
                                     <div class="car__item__text__inner">
-                                        <div class="label-date">2016</div>
-                                        <h5><a href="#">Porsche cayenne turbo s</a></h5>
+                                        <div class="label-date" th:text="${car.year}"></div>
+                                        <h5><a th:href="@{/car/${car.id}}" th:text="${car.brand} + ' ' + ${car.model}"></a></h5>
                                         <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
+                                            <li><span th:text="${car.mileage}"></span> km</li>
+                                            <li th:text="${car.transmission}"></li>
+                                            <li><span th:text="${car.hp}"></span> hp</li>
                                         </ul>
                                     </div>
                                     <div class="car__item__price">
-                                        <span class="car-option">For Rent</span>
-                                        <h6>$218<span>/Month</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-2.jpg" alt="">
-                                    <img src="/img/cars/car-8.jpg" alt="">
-                                    <img src="/img/cars/car-6.jpg" alt="">
-                                    <img src="/img/cars/car-4.jpg" alt="">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2020</div>
-                                        <h5><a href="#">Toyota camry asv50l-jeteku</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option sale">For Sale</span>
-                                        <h6>$73,900</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-3.jpg" alt="">
-                                    <img src="/img/cars/car-8.jpg" alt="">
-                                    <img src="/img/cars/car-6.jpg" alt="">
-                                    <img src="/img/cars/car-5.jpg" alt="">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2017</div>
-                                        <h5><a href="#">Bmw s1000rr 2019 m</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option">For Rent</span>
-                                        <h6>$299<span>/Month</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-5.jpg" alt="">
-                                    <img src="/img/cars/car-8.jpg" alt="">
-                                    <img src="/img/cars/car-7.jpg" alt="">
-                                    <img src="/img/cars/car-2.jpg" alt="">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2018</div>
-                                        <h5><a href="#">Audi q8 2020</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option">For Rent</span>
-                                        <h6>$319<span>/Month</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-6.jpg" alt="">
-                                    <img src="/img/cars/car-8.jpg" alt="">
-                                    <img src="/img/cars/car-3.jpg" alt="">
-                                    <img src="/img/cars/car-1.jpg" alt="">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2016</div>
-                                        <h5><a href="#">Mustang shelby gt500</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option sale">For Sale</span>
-                                        <h6>$730,900</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-4.jpg" alt="">
-                                    <img src="/img/cars/car-8.jpg" alt="">
-                                    <img src="/img/cars/car-2.jpg" alt="">
-                                    <img src="/img/cars/car-1.jpg" alt="">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2019</div>
-                                        <h5><a href="#">Lamborghini huracan evo</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option">For Rent</span>
-                                        <h6>$319<span>/Month</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-7.jpg" alt="">
-                                    <img src="/img/cars/car-2.jpg" alt="">
-                                    <img src="/img/cars/car-4.jpg" alt="">
-                                    <img src="/img/cars/car-1.jpg" alt="">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2020</div>
-                                        <h5><a href="#">Lamborghini huracan evo</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option sale">For Sale</span>
-                                        <h6>$120,000</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-8.jpg" alt="">
-                                    <img src="/img/cars/car-3.jpg" alt="">
-                                    <img src="/img/cars/car-5.jpg" alt="">
-                                    <img src="/img/cars/car-2.jpg" alt="">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2017</div>
-                                        <h5><a href="#">Porsche Cayenne Turbo s</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option">For Rent</span>
-                                        <h6>$319<span>/Month</span></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-4">
-                            <div class="car__item">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img src="/img/cars/car-8.jpg" alt="">
-                                    <img src="/img/cars/car-3.jpg" alt="">
-                                    <img src="/img/cars/car-5.jpg" alt="">
-                                    <img src="/img/cars/car-2.jpg" alt="">
-                                </div>/
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date">2020</div>
-                                        <h5><a href="#">Toyota camry asv50l-jeteku</a></h5>
-                                        <ul>
-                                            <li><span>35,000</span> mi</li>
-                                            <li>Auto</li>
-                                            <li><span>700</span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                                        <span class="car-option sale">For sale</span>
-                                        <h6>$73,900</h6>
+                            <span class="car-option"
+                                  th:class="${car.rentOrSale == 'sale' ? 'car-option sale' : 'car-option'}"
+                                  th:text="${car.rentOrSale == 'sale' ? 'For Sale' : 'For Rent'}"></span>
+                                        <h6 th:text="${car.price} + ' $' + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
                                     </div>
                                 </div>
                             </div>
