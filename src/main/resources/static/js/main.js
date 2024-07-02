@@ -54,6 +54,40 @@
         }
     });
 
+    document.addEventListener('DOMContentLoaded', function() {
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.querySelector('.next').addEventListener('click', function() {
+            slideIndex = (slideIndex + 1) % totalSlides;
+            updateSlider();
+        });
+
+        document.querySelector('.prev').addEventListener('click', function() {
+            slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        });
+
+        function updateSlider() {
+            const offset = -slideIndex * 100;
+            slides.forEach(slide => {
+                slide.style.transform = `translateX(${offset}%)`;
+            });
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('#nav-menu a');
+
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath) {
+                link.parentElement.classList.add('active');
+            }
+        });
+    });
+
     /*------------------
         Background Set
     --------------------*/
