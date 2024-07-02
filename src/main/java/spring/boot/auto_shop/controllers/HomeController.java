@@ -34,7 +34,7 @@ public class HomeController {
         List<Car> cars = carService.getAllCars().subList(0, 8);
         List<Blog> blogs = blogService.getAllBlogs();
 
-        Map<String, Set<Object>> carAttributes = carService.getCarAttributes();
+        Map<String, Object> carAttributes = carService.getCarAttributes();
 
         for (Blog blog1 : blogs) {
             if (blog1.getContent().length() > 255) {
@@ -48,6 +48,10 @@ public class HomeController {
         model.addAttribute("cars_years_rent", carAttributes.get("yearsRent"));
         model.addAttribute("cars_model_rent", carAttributes.get("modelsRent"));
         model.addAttribute("cars_mile_rent", carAttributes.get("mileRent"));
+        model.addAttribute("cars_brands_sale", carAttributes.get("brandsSale"));
+        model.addAttribute("cars_years_sale", carAttributes.get("yearsSale"));
+        model.addAttribute("cars_model_sale", carAttributes.get("modelsSale"));
+        model.addAttribute("cars_mile_sale", carAttributes.get("mileRent"));
 
         return "index";
     }

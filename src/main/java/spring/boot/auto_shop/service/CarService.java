@@ -1,5 +1,6 @@
 package spring.boot.auto_shop.service;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -45,18 +46,29 @@ public class CarService {
         return carRepository.findAll(pageable).getContent();
     }
 
-    public Map<String, Set<Object>> getCarAttributes() {
+    public Map<String, Object> getCarAttributes() {
         List<Car> cars = getAllCars();
-        Set<String> brandsRent = cars.stream().map(Car::getBrand).collect(Collectors.toSet());
-        Set<Integer> yearsRent = cars.stream().map(Car::getYear).collect(Collectors.toSet());
-        Set<String> modelsRent = cars.stream().map(Car::getModel).collect(Collectors.toSet());
-        Set<Integer> mileRent = cars.stream().map(Car::getMileage).collect(Collectors.toSet());
+        Set<String> brandsRent = getCarsBrandForRent();
+        Set<Integer> yearsRent = getCarsYearRent();
+        Set<String> modelsRent = getCarsModelRent();
+        Set<Integer> mileRent = getCarsMileageRent();
+        Set<String> brandsSale = getCarsBrandForSale();
+        Set<Integer> yearsSale = getCarsYearSale();
+        Set<String> modelsSale = getCarsModelSale();
+        Set<Integer> mileSale = getCarsMileageSale();
 
-        Map<String, Set<Object>> attributes = new HashMap<>();
-        attributes.put("brandsRent", new HashSet<>(brandsRent));
-        attributes.put("yearsRent", new HashSet<>(yearsRent));
-        attributes.put("modelsRent", new HashSet<>(modelsRent));
-        attributes.put("mileRent", new HashSet<>(mileRent));
+
+        List<Integer> mileRent1 = mileRent.stream().sorted().toList();
+        List<Integer> mileSale1 = mileSale.stream().sorted().toList();
+        Map<String, Object> attributes = new HashMap<>();
+        attributes.put("brandsRent", brandsRent);
+        attributes.put("yearsRent", yearsRent);
+        attributes.put("modelsRent", modelsRent);
+        attributes.put("mileRent", mileRent1);
+        attributes.put("brandsSale", brandsSale);
+        attributes.put("yearsSale", yearsSale);
+        attributes.put("modelsSale", modelsSale);
+        attributes.put("mileSale", mileSale1);
 
         return attributes;
     }
@@ -124,28 +136,26 @@ public class CarService {
         return models;
     }
 
-    public List<Integer> getCarsMileageRent() {
+    public Set<Integer> getCarsMileageRent() {
         List<Car> cars = getAllCars();
-        List<Integer> miles = new ArrayList<>();
+        Set<Integer> miles = new HashSet<>();
         for (Car car : cars) {
             if (car.getRentOrSale().equals("rent")) {
                 miles.add(car.getMileage());
             }
         }
-        Collections.sort(miles);
         return miles;
     }
 
 
-    public List<Integer> getCarsMileageSale() {
+    public Set<Integer> getCarsMileageSale() {
         List<Car> cars = getAllCars();
-        List<Integer> miles = new ArrayList<>();
+        Set<Integer> miles = new HashSet<>();
         for (Car car : cars) {
             if (car.getRentOrSale().equals("sale")) {
                 miles.add(car.getMileage());
             }
         }
-        Collections.sort(miles);
         return miles;
     }
 
@@ -173,7 +183,7 @@ public class CarService {
         List<Color> all_colors = colorRepository.findAll();
         List<String> colors = new ArrayList<>();
         for (Color color: all_colors) {
-            colors.add(color.getName().toUpperCase());
+            colors.add(color.getName());
         }
         return colors;
     }
