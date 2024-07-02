@@ -204,4 +204,8 @@ public class CarService {
         }
         return bodies;
     }
+
+    public Car getCarById(Long id) {
+        return carRepository.findById(id).orElseThrow();
+    }
 }
