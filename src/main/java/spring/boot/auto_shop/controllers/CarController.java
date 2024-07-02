@@ -1,5 +1,8 @@
 package spring.boot.auto_shop.controllers;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +29,11 @@ public class CarController {
     }
 
     @GetMapping("/car")
-    public String carPage(Model model) {
+    public String carPage(Model model,
+                          @RequestParam(defaultValue = "0") int page,
+                          @RequestParam(defaultValue = "9") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Page<Car> carPage = carService.getAllCarsPage(pageable);
         List<Car> cars = carService.getAllCars();
         List<Integer> miles = carService.getAllMileage();
         List<String> colors = carService.getAllColors();
@@ -42,6 +49,7 @@ public class CarController {
         model.addAttribute("engines", engines);
         model.addAttribute("models", models);
         model.addAttribute("car_bodies", car_bodies);
+        model.addAttribute("carPage", carPage);
         return "car";
     }
 }

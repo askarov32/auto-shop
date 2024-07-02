@@ -2,6 +2,7 @@ package spring.boot.auto_shop.service;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -32,10 +33,13 @@ public class CarService {
         this.carBodyRepository  = carBodyRepository;
     }
 
+    public Page<Car> getAllCarsPage(Pageable pageable) {
+        return carRepository.findAll(pageable);
+    }
+
     public List<Car> getAllCars() {
         return carRepository.findAll();
     }
-
     public List<Car> getMoreCars(int page, int pageSize) {
         Pageable pageable = PageRequest.of(page - 1, pageSize);
         return carRepository.findAll(pageable).getContent();

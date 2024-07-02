@@ -25,190 +25,198 @@
 </head>
 
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
 
-    <div th:insert="fragments/header.html"></div>
+<div th:insert="fragments/header.html"></div>
 
-    <!-- Breadcrumb End -->
-    <div class="breadcrumb-option set-bg" data-setbg="img/breadcrumb-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Car Listing</h2>
-                        <div class="breadcrumb__links">
-                            <a href="index"><i class="fa fa-home"></i> Home</a>
-                            <span>About</span>
-                        </div>
+<!-- Breadcrumb End -->
+<div class="breadcrumb-option set-bg" data-setbg="img/breadcrumb-bg.jpg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="breadcrumb__text">
+                    <h2>Car Listing</h2>
+                    <div class="breadcrumb__links">
+                        <a href="index"><i class="fa fa-home"></i> Home</a>
+                        <span>About</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Breadcrumb Begin -->
+</div>
+<!-- Breadcrumb Begin -->
 
-    <!-- Car Section Begin -->
-    <section class="car spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="car__sidebar">
-                        <div class="car__search">
-                            <h5>Car Search</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Search...">
-                                <button type="submit"><i class="fa fa-search"></i></button>
-                            </form>
-                        </div>
-                        <div class="car__filter">
-                            <h5>Car Filter</h5>
-                            <form action="#">
-                                <select>
-                                    <option data-display="Brand">Select Brand</option>
-                                    <th:block th:each="brand : ${brands}">
-                                        <option th:value="${brand}" th:text="${brand}"></option>
-                                    </th:block>
-                                </select>
-                                <select>
-                                    <option data-display="Model">Select Model</option>
-                                    <th:block th:each="model : ${models}">
-                                        <option th:value="${model}" th:text="${model}"></option>
-                                    </th:block>
-                                </select>
-                                <select>
-                                    <option data-display="Body Style">Select Body Style</option>
-                                    <th:block th:each="body : ${car_bodies}">
-                                        <option th:value="${body}" th:text="${body}"></option>
-                                    </th:block>
-                                </select>
-                                <select>
-                                    <option value="">Condition</option>
-                                    <option value="">First Hand</option>
-                                    <option value="">Second Hand</option>
-                                </select>
-                                <select>
-                                    <option value="">Transmission</option>
-                                    <option value="">Automatic</option>
-                                    <option value="">Manual</option>
-                                </select>
-                                <select>
-                                    <option data-display="Mileage">Select Mileage</option>
-                                    <th:block th:each="mile : ${miles}">
-                                        <option th:value="${mile}" th:text="${mile}"></option>
-                                    </th:block>
-                                </select>
-                                <select>
-                                    <option data-display="Engine">Select Engine</option>
-                                    <th:block th:each="engine : ${engines}">
-                                        <option th:value="${engine}" th:text="${engine}"></option>
-                                    </th:block>
-                                </select>
-                                <select>
-                                    <option data-display="Color">Select Color</option>
-                                    <th:block th:each="color : ${colors}">
-                                        <option th:value="${color}" th:text="${color}"></option>
-                                    </th:block>
-                                </select>
-                                <div class="filter-price">
-                                    <p>Price:</p>
-                                    <div class="price-range-wrap">
-                                        <div class="filter-price-range"></div>
-                                        <div class="range-slider">
-                                            <div class="price-input">
-                                                <input type="text" id="filterAmount">
-                                            </div>
+<!-- Car Section Begin -->
+<section class="car spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="car__sidebar">
+                    <div class="car__search">
+                        <h5>Car Search</h5>
+                        <form action="#">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div class="car__filter">
+                        <h5>Car Filter</h5>
+                        <form action="#">
+                            <select>
+                                <option data-display="Brand">Select Brand</option>
+                                <th:block th:each="brand : ${brands}">
+                                    <option th:value="${brand}" th:text="${brand}"></option>
+                                </th:block>
+                            </select>
+                            <select>
+                                <option data-display="Model">Select Model</option>
+                                <th:block th:each="model : ${models}">
+                                    <option th:value="${model}" th:text="${model}"></option>
+                                </th:block>
+                            </select>
+                            <select>
+                                <option data-display="Body Style">Select Body Style</option>
+                                <th:block th:each="body : ${car_bodies}">
+                                    <option th:value="${body}" th:text="${body}"></option>
+                                </th:block>
+                            </select>
+                            <select>
+                                <option value="">Condition</option>
+                                <option value="">First Hand</option>
+                                <option value="">Second Hand</option>
+                            </select>
+                            <select>
+                                <option value="">Transmission</option>
+                                <option value="">Automatic</option>
+                                <option value="">Manual</option>
+                            </select>
+                            <select>
+                                <option data-display="Mileage">Select Mileage</option>
+                                <th:block th:each="mile : ${miles}">
+                                    <option th:value="${mile}" th:text="${mile}"></option>
+                                </th:block>
+                            </select>
+                            <select>
+                                <option data-display="Engine">Select Engine</option>
+                                <th:block th:each="engine : ${engines}">
+                                    <option th:value="${engine}" th:text="${engine}"></option>
+                                </th:block>
+                            </select>
+                            <select>
+                                <option data-display="Color">Select Color</option>
+                                <th:block th:each="color : ${colors}">
+                                    <option th:value="${color}" th:text="${color}"></option>
+                                </th:block>
+                            </select>
+                            <div class="filter-price">
+                                <p>Price:</p>
+                                <div class="price-range-wrap">
+                                    <div class="filter-price-range"></div>
+                                    <div class="range-slider">
+                                        <div class="price-input">
+                                            <input type="text" id="filterAmount">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="car__filter__btn">
-                                    <button type="submit" class="site-btn">Reset FIlter</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="car__filter__option">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="car__filter__option__item">
-                                    <h6>Show On Page</h6>
-                                    <select>
-                                        <option value="">9 Car</option>
-                                        <option value="">15 Car</option>
-                                        <option value="">20 Car</option>
-                                    </select>
-                                </div>
                             </div>
-                            <div class="col-lg-6 col-md-6">
-                                <div class="car__filter__option__item car__filter__option__item--right" style="justify-content: space-between">
-                                    <h6>Sort By</h6>
-                                    <select>
-                                        <option value="">Price: Highest First</option>
-                                        <option value="">Price: Lowest First</option>
-                                        <option value="">Mileage: Highest First</option>
-                                        <option value="">Mileage: Lowest First</option>
-                                    </select>
-                                </div>
+                            <div class="car__filter__btn">
+                                <button type="submit" class="site-btn">Reset FIlter</button>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row car-filter" id="car-list" style="justify-content: center">
-                        <div th:each="car : ${cars}" class="col-lg-5 col-md col-sm-6 mix" style="justify-content: space-between"
-                             th:classappend="${car.rentOrSale == 'sale' ? 'sale' : ''}">
-                            <div class="car__item" style="width: 300px; height: 450px">
-                                <div class="car__item__pic__slider owl-carousel">
-                                    <img th:src="@{${car.image}}" th:alt="${car.brand} + ' ' + ${car.model}" style="width: 100%; height: 200px">
-                                </div>
-                                <div class="car__item__text">
-                                    <div class="car__item__text__inner">
-                                        <div class="label-date" th:text="${car.year}"></div>
-                                        <h5><a th:href="@{/car-info(id=${car.id})}" th:text="${car.brand} + ' ' + ${car.model}"></a></h5>
-                                        <ul style="justify-content: space-between">
-                                            <li><span th:text="${car.mileage}"></span> km</li>
-                                            <li th:text="${car.transmission}"></li>
-                                            <li><span th:text="${car.hp}"></span> hp</li>
-                                        </ul>
-                                    </div>
-                                    <div class="car__item__price">
-                            <span class="car-option"
-                                  th:class="${car.rentOrSale == 'sale' ? 'car-option sale' : 'car-option'}"
-                                  th:text="${car.rentOrSale == 'sale' ? 'For Sale' : 'For Rent'}"></span>
-                                        <h6 th:text="${car.price} + ' $' + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="pagination__option">
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#"><span class="arrow_carrot-2right"></span></a>
+                        </form>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-9">
+                <div class="car__filter__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="car__filter__option__item">
+                                <h6>Show On Page</h6>
+                                <select>
+                                    <option value="">9 Car</option>
+                                    <option value="">15 Car</option>
+                                    <option value="">20 Car</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="car__filter__option__item car__filter__option__item--right"
+                                 style="justify-content: space-between">
+                                <h6>Sort By</h6>
+                                <select>
+                                    <option value="">Price: Highest First</option>
+                                    <option value="">Price: Lowest First</option>
+                                    <option value="">Mileage: Highest First</option>
+                                    <option value="">Mileage: Lowest First</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row car-filter" id="car-list" style="justify-content: center">
+                    <div th:each="car : ${carPage.content}" class="col-lg-5 col-md col-sm-6 mix"
+                         style="justify-content: space-between"
+                         th:classappend="${car.rentOrSale == 'sale' ? 'sale' : ''}">
+                        <div class="car__item" style="width: 300px; height: 450px">
+                            <div class="car__item__pic__slider owl-carousel">
+                                <img th:src="@{${car.image}}" th:alt="${car.brand} + ' ' + ${car.model}"
+                                     style="width: 100%; height: 200px">
+                            </div>
+                            <div class="car__item__text">
+                                <div class="car__item__text__inner">
+                                    <div class="label-date" th:text="${car.year}"></div>
+                                    <h5><a th:href="@{/car-info(id=${car.id})}"
+                                           th:text="${car.brand} + ' ' + ${car.model}"></a></h5>
+                                    <ul style="justify-content: space-between">
+                                        <li><span th:text="${car.mileage}"></span> km</li>
+                                        <li th:text="${car.transmission}"></li>
+                                        <li><span th:text="${car.hp}"></span> hp</li>
+                                    </ul>
+                                </div>
+                                <div class="car__item__price">
+                    <span class="car-option"
+                          th:class="${car.rentOrSale == 'sale' ? 'car-option sale' : 'car-option'}"
+                          th:text="${car.rentOrSale == 'sale' ? 'For Sale' : 'For Rent'}"></span>
+                                    <h6 th:text="${car.price} + ' $' + (${car.rentOrSale == 'sale' ? '' : '/Month'})"></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination__option">
+                    <a th:href="@{/car(page=${carPage.number - 1}, size=${carPage.size})}" th:if="${carPage.number > 0}"
+                       class="arrow_carrot-2left"></a>
+                    <a th:each="i : ${#numbers.sequence(1, carPage.totalPages)}"
+                       th:href="@{/car(page=${i - 1}, size=${carPage.size})}"
+                       th:text="${i}" th:class="${carPage.number == i - 1 ? 'active' : ''}"></a>
+                    <a th:href="@{/car(page=${carPage.number + 1}, size=${carPage.size})}"
+                       th:if="${carPage.number < carPage.totalPages - 1}" class="arrow_carrot-2right"></a>
+                </div>
+            </div>
         </div>
-    </section>
-    <!-- Car Section End -->
+    </div>
+</section>
+<!-- Car Section End -->
 
-    <div th:insert="fragments/footer.html"></div>
-    <div th:insert="fragments/search.html"></div>
+<div th:insert="fragments/footer.html"></div>
+<div th:insert="fragments/search.html"></div>
 
-    <!-- Js Plugins -->
-    <script th:src="@{/js/jquery-3.3.1.min.js}"></script>
-    <script th:src="@{/js/bootstrap.min.js}"></script>
-    <script th:src="@{/js/jquery.nice-select.min.js}"></script>
-    <script th:src="@{/js/jquery-ui.min.js}"></script>
-    <script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
-    <script th:src="@{/js/mixitup.min.js}"></script>
-    <script th:src="@{/js/jquery.slicknav.js}"></script>
-    <script th:src="@{/js/owl.carousel.min.js}"></script>
-    <script th:src="@{/js/main.js}"></script>
-    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<!-- Js Plugins -->
+<script th:src="@{/js/jquery-3.3.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.nice-select.min.js}"></script>
+<script th:src="@{/js/jquery-ui.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/mixitup.min.js}"></script>
+<script th:src="@{/js/jquery.slicknav.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
 </body>
 
 </html>
