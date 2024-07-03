@@ -17,4 +17,9 @@ public class Review {
     @Id
     @Column(name = "id")
     private int id;
+
+    @Column(name = "content")
+    private String content;
+
+//    @Column(name = "user_id")
 }
