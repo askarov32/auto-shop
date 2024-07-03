@@ -18,4 +18,9 @@ public class AuthController {
     public String admin() {
         return "admin";
     }
+
+    @GetMapping("/forbidden")
+    public String forbidden() {
+        return "forbidden";
+    }
 }
