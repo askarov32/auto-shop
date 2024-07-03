@@ -137,7 +137,7 @@
                             <div class="car__filter__option__item">
                                 <h6>Show On Page</h6>
                                 <select>
-                                    <option value="">9 Car</option>
+                                    <option value="">10 Car</option>
                                     <option value="">15 Car</option>
                                     <option value="">20 Car</option>
                                 </select>
@@ -159,8 +159,7 @@
                 </div>
                 <div class="row car-filter" id="car-list" style="justify-content: center">
                     <div th:each="car : ${carPage.content}" class="col-lg-5 col-md col-sm-6 mix"
-                         style="justify-content: space-between"
-                         th:classappend="${car.rentOrSale == 'sale' ? 'sale' : ''}">
+                         style="justify-content: space-between">
                         <div class="car__item" style="width: 300px; height: 450px">
                             <div class="car__item__pic__slider owl-carousel">
                                 <img th:src="@{${car.image}}" th:alt="${car.brand} + ' ' + ${car.model}"
