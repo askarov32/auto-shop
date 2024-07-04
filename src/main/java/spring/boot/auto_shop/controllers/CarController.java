@@ -21,7 +21,6 @@ public class CarController {
     public CarController(CarService carService) {
         this.carService = carService;
     }
-    @PreAuthorize("isAuthenticated()")
     @GetMapping("/car-info")
     public String getCarDetails(@RequestParam("id") Long id, Model model) {
         Car car = carService.getCarById(id);
