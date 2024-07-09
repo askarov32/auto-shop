@@ -105,7 +105,7 @@
                             <img th:src="${comment.user.profilePicture}" alt="User Image">
                         </div>
                         <div class="blog__details__comment__item__text">
-                            <h6 th:text="${comment.user.fullname}"></h6>
+                            <h6 th:text="${comment.user.getUsername}"></h6>
                             <p th:text="${comment.text}"></p>
                             <a href="#">Like</a>
                             <a href="#">Reply</a>
@@ -113,27 +113,23 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="blog__details__comment__form">
                     <h4>Leave A Reply</h4>
-                    <form action="#">
+                    <form th:action="@{/blog-info/{blogId}/add-comment}" method="post">
+<!--                        <input type="hidden" th:name="_csrf" th:value="${_csrf.token}"/>-->
                         <div class="input-list">
                             <div class="input-list-item">
                                 <p>Name</p>
-                                <input type="text">
+                                <input type="text" th:value="${username}" readonly/>
                             </div>
                             <div class="input-list-item">
                                 <p>Email</p>
-                                <input type="text">
-                            </div>
-                            <div class="input-list-item">
-                                <p>Website</p>
-                                <input type="text">
+                                <input type="text" th:value="${email}" readonly/>
                             </div>
                         </div>
                         <div class="input-desc">
                             <p>Comment</p>
-                            <textarea></textarea>
+                            <textarea name="text" required="required"></textarea>
                         </div>
                         <button type="submit" class="site-btn">Submit Now</button>
                     </form>

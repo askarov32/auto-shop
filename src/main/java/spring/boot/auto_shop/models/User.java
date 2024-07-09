@@ -8,7 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -27,8 +26,8 @@ public class User implements UserDetails {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "fullname")
-    private String fullname;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;

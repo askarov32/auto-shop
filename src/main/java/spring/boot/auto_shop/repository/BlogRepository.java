@@ -13,4 +13,5 @@ import java.util.List;
 public interface BlogRepository extends JpaRepository<Blog, Integer> {
     @Query("SELECT b FROM Blog b LEFT JOIN FETCH b.comments")
     List<Blog> findAllWithComments();
+
 }

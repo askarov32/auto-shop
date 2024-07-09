@@ -1,6 +1,8 @@
 package spring.boot.auto_shop.controllers;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +27,15 @@ public class BlogController {
     }
 
     @GetMapping("/blog-info")
-    public String blogInfo(@RequestParam("id") int id, Model model) {
+    public String blogInfo(@RequestParam("id") int id, Model model, Authentication authentication) {
         Blog blog = blogService.getBlogById(id);
         model.addAttribute("blog", blog);
+
+        if (authentication != null && authentication.isAuthenticated()) {
+            model.addAttribute("username", authentication.getName());
+            model.addAttribute("email", ((UserDetails) authentication.getPrincipal()).getUsername());
+        }
+
         return "blog-info";
     }
 
